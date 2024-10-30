@@ -7,6 +7,8 @@ import net.fabricmc.fabric.api.gamerule.v1.rule.DoubleRule;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
+import java.util.Objects;
+
 public final class LeashPlayers implements ModInitializer {
     private static GameRules.Key<GameRules.BooleanRule> ruleEnabled;
     private static GameRules.Key<DoubleRule> ruleDistanceMin;
@@ -15,7 +17,7 @@ public final class LeashPlayers implements ModInitializer {
     public static LeashSettings getSettings(World world) {
         return new LeashSettings() {
             private GameRules getGameRules() {
-                return world.getGameRules();
+                return Objects.requireNonNull(world.getServer()).getGameRules();
             }
 
             @Override

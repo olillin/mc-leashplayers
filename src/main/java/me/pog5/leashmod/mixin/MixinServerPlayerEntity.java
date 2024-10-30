@@ -130,7 +130,7 @@ public abstract class MixinServerPlayerEntity implements LeashImpl {
     }
 
     private void leashplayers$drop() {
-        leashplayers$self.dropItem(Items.LEAD);
+        leashplayers$self.dropItem(new ItemStack(Items.LEAD), true);
     }
 
     @Inject(method = "tick()V", at = @At("TAIL"))
